@@ -1,0 +1,180 @@
+architecture_task:
+  description: >
+    - Conduct a thorough analysis of the project and gather all relevant information required to document the system’s architecture.
+    - Create a comprehensive system architecture document that covers both high-level overviews and detailed technical aspects.
+    - Analyze the key project files to extract the following information:
+      - **Data Flow Diagrams**: Use Mermaid to visualize data flows and processes within the system.
+      - **Programming Languages**: Identify and list the languages used in the project.
+      - **Project Overview**: Provide an overview of the project's current state, its objectives, and advancements.
+      - **Business Rules**: Document the business logic and rules that guide the project's behavior.
+      - **Build Dependencies**: List all dependencies and files related to building the project (e.g., `package.json`, `requirements.txt`).
+      - **Project Name**: Include the project's name.
+      - **Introduction**: Provide an introductory section explaining the purpose of the project and what this document will cover.
+      - **Table of Contents**: Include a navigable table of contents for easy reference to sections of the documentation.
+      - **Project Architecture**: Provide detailed descriptions of the system architecture, including diagrams and component interactions.
+      - **Frameworks and Technologies**: Document the technologies and frameworks used in the project, explaining their role.
+      - **Build Instructions**: Outline the steps for setting up and building the project.
+      - **Deployment Instructions**: Include detailed instructions for deploying the project in a production environment.
+      - **Environment Variables**: List and explain any environment variables required for the system to run correctly.
+      - **API Documentation**: Provide detailed documentation of the API, including endpoints, methods, and usage examples.
+      - **Conclusion**: Conclude with a summary of the project’s goals and any future considerations.
+    - Analyze the code in the project directory: `{directory}` and ensure all critical details are documented accurately.
+
+  expected_output: >
+    A comprehensive architecture documentation that includes, if applicable:
+      - **Programming Languages**
+      - **Project Overview**
+      - **Business Rules**
+      - **Build Dependencies**
+      - **Project Name**
+      - **Introduction**
+      - **Table of Contents**
+      - **Project Architecture**
+      - **Frameworks and Technologies**
+      - **Build Instructions**
+      - **Deployment Instructions**
+      - **Environment Variables**
+      - **API Documentation**
+      - **Conclusion**
+  agent: senior_software_architect
+
+writer_md:
+  description: >
+    - Generate a **comprehensive project report** in Markdown format for the development team.
+    - Ensure the report is structured clearly, with each section providing detailed, relevant information.
+    - Do not enclose the Markdown content in code blocks (i.e., no '```' or '```markdown').
+    - Use model file TEMPLATE.md
+  expected_output: >
+    The final report should be a **complete project documentation** with the following sections, each thoroughly explained:
+    - **🚀 Introduction**: 
+        - Provide an overview of the project, including its purpose, objectives, and key goals.
+        - Briefly explain what the reader can expect to find in the rest of the document.
+    - **📚 Table of Contents**: 
+        - Include an index of all sections in the document, allowing readers to easily navigate between topics.
+    - **📜 Business Rules**: 
+        - Describe the business rules that govern the project, ensuring the team understands the logic and conditions behind decisions made during development.
+        - Include any constraints, validations, or conditions that are central to the system’s functionality.
+    - **🏗️ Project Architecture**: 
+        - Provide a detailed description of the system architecture, including the structure of components and how they interact with each other.
+        - Include **diagrams** where relevant to help visualize the system, highlighting key components (e.g., database, frontend, backend, APIs, etc.).
+        - Explain the communication flow between components and any design patterns used (e.g., microservices, monolithic, serverless).
+    - **⚙️ Technologies and Frameworks**: 
+        - Introduce the technologies and frameworks used in the project (e.g., programming languages, libraries, frameworks, tools).
+        - Describe the role of each technology and why it was chosen.
+        - Mention any third-party services or APIs integrated into the project.
+    - **🔨 Build Instructions**: 
+        - Provide clear, step-by-step instructions on how to set up the development environment and build the project from source.
+        - Include dependencies installation (e.g., `npm install`, `pip install`), any setup scripts, and specific configurations needed.
+    - **🚀 Deployment Instructions**: 
+        - Detail the steps required to deploy the project to production, including any infrastructure setup (e.g., cloud services, server configuration, CI/CD pipelines).
+        - Include deployment targets (e.g., AWS, Heroku, GCP) and environment-specific configurations.
+        - Provide instructions for rolling back or updating deployments, if applicable.
+    - **🌍 Environment Variables**: 
+        - List all environment variables required for the project, explaining their purpose and how to configure them.
+        - Include variables for different environments (e.g., development, production) and any sensitive data (e.g., API keys, database URLs).
+    - **🔒 Security Considerations**: 
+        - Discuss security best practices to protect the application and its data (e.g., authentication, data encryption, access controls).
+        - Highlight any specific security vulnerabilities or measures to consider (e.g., cross-site scripting prevention, secure communication protocols).
+    - **📡 API Documentation**: 
+        - Provide detailed information about the project's API, including:
+            - API endpoints (URLs, HTTP methods).
+            - Request and response formats (e.g., JSON).
+            - Authentication methods (e.g., OAuth, JWT).
+            - Example requests and responses.
+            - Any relevant error handling or status codes.
+            - Usage tips for developers interacting with the API.
+    - **🎉 Conclusion**: 
+        - Conclude the document with a brief recap, thanking the team and encouraging collaboration.
+        - Provide motivation for future contributions or improvements to the project.
+    - **🤝 Contributing**: 
+        - Explain how others can contribute to the project.
+        - Include guidelines on code submission (e.g., pull requests), code style, testing, and issue reporting.
+    - **📄 License**: 
+        - Specify the project's license and explain how it impacts the use of the project and its code.
+        - Mention any permissions or restrictions, and link to full license details if necessary.
+  agent: project_documentation_writer
+
+
+analyzer_code_backend_task:
+  description: >
+    - Conduct a thorough analysis of the provided project codebase and generate detailed project documentation. 
+    - Ensure that all relevant **source files**, **build files**, and **deployment configurations** are accurately identified, documented, and explained. 
+    - Document the project's **business rules**, **architecture**, and **frameworks/technologies** used.
+    - Provide clear, actionable instructions for the project's build process and deployment, including environment variable setup.
+    - Identify and analyze all key files, focusing on the most critical files that define business logic, architecture, and deployment workflows.
+    - Extract and document **API endpoints** and any relevant interactions that the system exposes.
+    - For the analysis, focus on the provided project **directory**: `{directory}`.
+    **User search_query:** 
+      Business Rules, Project Architecture, Frameworks and Technologies, Build Instructions, Deployment Instructions, Environment Variables, API Documentation.
+
+  expected_output: >
+    A comprehensive document covering all relevant aspects, including:
+      - **Business Rules:** Detailed description of the business rules, their purpose, conditions, and exceptions.
+      - **Project Architecture:** Diagram and explanation of the system's architecture, including key components, services, and their interactions.
+      - **Frameworks and Technologies:** List and explanation of the programming languages, frameworks, libraries, and tools used (e.g., Python, Flask, Docker, etc.).
+      - **Build Instructions:** Step-by-step guide for building the project, including package dependencies and necessary tools.
+      - **Deployment Instructions:** Clear instructions for deploying the system, specifying server requirements, cloud configurations, and any automation tools used (e.g., Kubernetes, Docker Compose).
+      - **Environment Variables:** Complete list of environment variables, their roles, and how they should be configured.
+      - **API Documentation:** Full API documentation for any exposed endpoints, including methods, request/response formats, authentication mechanisms, and error handling.
+  agent: senior_specialist_software_backend
+
+analyzer_code_frontend_task:
+  description: >
+    - Ensure all relevant **build files** are accurately identified, analyzed, and documented.
+    - Provide **clear instructions** for building and deploying the frontend project, including environment variables.
+    - List the **key files** and focus on the main ones that define the project structure, components, and functionalities.
+    - Analyze the frontend-specific parts of the project such as component structure, styling, routing, and state management.
+    - User search_query: Business Rules, Project Architecture, Frameworks and Technologies, Build Instructions, Deployment Instructions, Environment Variables, API Documentation.
+    - The analysis will focus on the **frontend code files** in the given directory: `{directory}`.
+  expected_output: >
+    A comprehensive document containing the following details, if applicable:
+      - **Business Rules**: Descriptions of any business logic or frontend-specific rules implemented within the system.
+      - **Project Architecture**: Overview of the frontend architecture, including structure, components, and workflows.
+      - **Frameworks and Technologies**: List and explanation of the frontend technologies and frameworks used (e.g., React, Vue, Angular, CSS preprocessors).
+      - **Build Instructions**: Clear instructions for building the frontend, including package manager setup, dependencies, and required build tools.
+      - **Deployment Instructions**: Instructions for deploying the frontend, including necessary server or hosting configurations (e.g., Netlify, AWS S3, Docker).
+      - **Environment Variables**: A list of environment variables required by the frontend, their purpose, and how to configure them.
+
+  agent: senior_specialist_software_frontend
+
+write_document_business:
+  description: >
+    Code Analysis: Review the provided source code, focusing on the logic, conditions, interactions, and processes that 
+    define the system's behavior.
+    Identify Business Rules: Based on the code analysis, identify the key business rules. These rules can include 
+    validation rules, conditions, data constraints, workflows, integration with other systems, or any critical 
+    processes that the system follows.
+    Document the Rules: Create a detailed section that describes the business rules identified. The descriptions 
+    should be clear, precise, and user-oriented, explaining how these rules impact the system's operation and how 
+    they should be followed.
+    Analyze the project's code by reading files in the directory: {directory}.
+  expected_output: >
+    # Documentation Structure:
+    # Introduction:
+     - Brief description of the system and its purpose.
+     - Overview of the business rules addressed in this documentation.
+     - Business Rules:
+     - Rule 1: Detailed description of the first business rule. Include:
+          Objective: What does this rule aim to achieve?
+          Conditions: What conditions must be met for the rule to be applied?
+          Exceptions: Are there any exceptions or special conditions that alter the rule? If so, describe them.
+          Execution Flow: How is the rule implemented in the code? (Explain the logic and how it relates to the system’s behavior).
+          Business Impact: How does this rule affect business processes, users, or other systems?
+      - Rule 2: (Follow the same format for each identified rule).
+      - Diagrams or Flow Examples (if necessary):   
+    # Conclusion:
+    - A summary of the business rules covered.
+    - Considerations on how these rules impact the overall system operation or business processes.
+    - Additional notes on areas where the business documentation could be expanded or improved.
+    - Example Questions to Guide the Analysis:
+      What conditions must be true for a user to perform a specific action in the system (e.g., make a payment, log in, add an item to the cart)?
+      Are there any calculations or data transformations that must be followed to ensure the system operates correctly (e.g., discounts, fees)?
+      How does the system handle failures or exceptions? Is there a specific behavior for when something goes wrong (e.g., invalid data entry, network failure)?
+      What happens when a business rule is not met? Does the system return an error message? Does it block an action?
+      Additional Instructions:
+    - When identifying rules in the code, pay special attention to conditional blocks (if, switch, try/catch) and functions that execute 
+      critical logic (such as calculations, data validations, permission checks).
+    - Ensure that the documentation is clear for non-technical people. Avoid jargon, and when necessary, provide explanations or links to technical terms.
+    - Provide examples whenever possible to illustrate how the rules apply in the real-world context of the system.
+  agent: senior_project_manager
+
